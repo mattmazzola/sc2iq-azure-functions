@@ -1,7 +1,7 @@
 {
   "bindings": [
     {
-      "name": "myBlob",
+      "name": "xmlZipBlob",
       "type": "blobTrigger",
       "direction": "in",
       "path": "balancedataxml",

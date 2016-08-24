@@ -10,7 +10,6 @@ module.exports = function (context, xmlZipBlob) {
         }
 
         context.log('saved blob to loal file called xmlZip.zip');
+        context.done();
     });
-
-    context.done();
 };

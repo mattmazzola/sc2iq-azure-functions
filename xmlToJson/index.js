@@ -22,5 +22,6 @@ module.exports = function (context, xmlZipBlob) {
 
     setTimeout(function () {
         context.log('timeout worked');
+        context.done();
     }, 2000);
 };

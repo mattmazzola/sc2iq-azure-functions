@@ -39,7 +39,7 @@ module.exports = function (context, req, res) {
 
     var tempDir = process.env["TMP"];
     var filePath = path.join(tempDir, 'message.txt');
-    var fileContents = 'Hellow Node.js_' + req.body;
+    var fileContents = 'Hellow Node.js_' + req.body.message;
 
     context.log("writing: ", fileContents);
 
@@ -49,6 +49,12 @@ module.exports = function (context, req, res) {
         }
 
         context.log("File is saved!");
+        context.res = {
+            status: 200,
+            body: {
+                message: 'You successfully saved the file!'
+            }
+        };
         context.done();
     });
 }

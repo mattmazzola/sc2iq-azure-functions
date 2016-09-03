@@ -8,8 +8,14 @@ var environmentVariables = [
     "WEBSITE_INSTANCE_ID",
     "WEBSITE_NODE_DEFAULT_VERSION",
     "WEBSOCKET_CONCURRENT_REQUEST_LIMIT",
-    "%APPDATA%",
-    "%TMP%"
+    "APPDATA",
+    "TMP",
+    "WEBJOBS_PATH",
+    "WEBJOBS_NAME",
+    "WEBJOBS_TYPE",
+    "WEBJOBS_DATA_PATH",
+    "WEBJOBS_RUN_ID",
+    "WEBJOBS_SHUTDOWN_FILE"
 ]
 
 module.exports = function (context, req, res) {
@@ -19,7 +25,9 @@ module.exports = function (context, req, res) {
     context.log('Environment Variables');
     environmentVariables
         .map(getEnvironmentVarible)
-        .forEach(context.log);
+        .forEach(function (x) {
+            context.log(x);
+        });
 
     context.log('process.cwd()', process.cwd());
     context.log('__dirname', __dirname);

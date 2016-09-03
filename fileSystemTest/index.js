@@ -34,15 +34,12 @@ module.exports = function (context, req, res) {
     context.log('__dirname', __dirname);
 
     var tempDir = process.env["TMP"];
-    var homeDir = process.env["HOME"];
     var filePath = path.join(tempDir, 'message.txt');
-    var homeFilePath = path.join(homeDir, 'message.txt');
     var fileContents = 'Hellow Node.js_' + req.body.message;
 
-    context.log("destination: ", homeFilePath);
     context.log("writing: ", fileContents);
 
-    fs.writeFile(homeFilePath, fileContents, (err) => {
+    fs.writeFile(filePath, fileContents, (err) => {
         if (err) {
             throw err;
         }
@@ -51,7 +48,7 @@ module.exports = function (context, req, res) {
         context.res = {
             status: 200,
             body: {
-                message: 'You successfully saved the file to: ' + homeFilePath
+                message: 'You successfully saved the file!'
             }
         };
         context.done();

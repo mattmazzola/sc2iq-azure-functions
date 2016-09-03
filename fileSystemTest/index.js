@@ -38,7 +38,7 @@ module.exports = function (context, req, res) {
     context.log('__dirname', __dirname);
 
     var tempDir = process.env["TMP"];
-    var filePath = path.join(tmpDir, 'message.txt');
+    var filePath = path.join(tempDir, 'message.txt');
     var fileContents = 'Hellow Node.js_' + req.body;
 
     context.log("writing: ", fileContents);

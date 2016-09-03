@@ -1,4 +1,5 @@
 var fs = require('fs');
+var path = require('path');
 
 var environmentVariables = [
     "WEBSITE_SITE_NAME",
@@ -10,12 +11,16 @@ var environmentVariables = [
     "WEBSOCKET_CONCURRENT_REQUEST_LIMIT",
     "APPDATA",
     "TMP",
+    "HOME",
+    "SYSTEMDRIVE",
     "WEBJOBS_PATH",
     "WEBJOBS_NAME",
     "WEBJOBS_TYPE",
     "WEBJOBS_DATA_PATH",
     "WEBJOBS_RUN_ID",
-    "WEBJOBS_SHUTDOWN_FILE"
+    "WEBJOBS_SHUTDOWN_FILE",
+    "WEBSITE_NODE_DEFAULT_VERSION",
+    "WEBSITE_NPM_DEFAULT_VERSION"
 ]
 
 module.exports = function (context, req, res) {
@@ -32,9 +37,18 @@ module.exports = function (context, req, res) {
     context.log('process.cwd()', process.cwd());
     context.log('__dirname', __dirname);
 
-    fs.writeFile('D:/local/Temp/message.txt', 'Hello Node.js', (err) => {
-        if (err) throw err;
-        context.log("It's saved!");
+    var tempDir = process.env["TMP"];
+    var filePath = path.join(tmpDir, 'message.txt');
+    var fileContents = 'Hellow Node.js_' + req.body;
+
+    context.log("writing: ", fileContents);
+
+    fs.writeFile(filePath, fileContents, (err) => {
+        if (err) {
+            throw err;
+        }
+
+        context.log("File is saved!");
         context.done();
     });
 }

@@ -1,5 +1,5 @@
 var fs = require('fs');
-var path = rqeuire('path');
+var path = require('path');
 
 module.exports = function (context, xmlZipBlob) {
     context.log('Node.js blob trigger function processed blob:', xmlZipBlob);

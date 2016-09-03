@@ -34,24 +34,36 @@ module.exports = function (context, req, res) {
     context.log('__dirname', __dirname);
 
     var tempDir = process.env["TMP"];
-    var filePath = path.join(tempDir, 'message.txt');
+    var homeDir = process.env["HOME"];
+    var tempFilePath = path.join(tempDir, 'message.txt');
+    var homeFilePath = path.join(homeDir, 'message.txt');
     var fileContents = 'Hellow Node.js_' + req.body.message;
 
+    context.log("temp filepath: ", tempFilePath);
+    context.log("home filepath: ", homeFilePath);
     context.log("writing: ", fileContents);
 
-    fs.writeFile(filePath, fileContents, (err) => {
+    fs.writeFile(tempFilePath, fileContents, (err) => {
         if (err) {
             throw err;
         }
 
-        context.log("File is saved!");
-        context.res = {
-            status: 200,
-            body: {
-                message: 'You successfully saved the file!'
+        context.log("Temp File is saved!");
+        
+        fs.writeFile(homeFilePath, fileContents, (err) => {
+            if (err) {
+                throw err;
             }
-        };
-        context.done();
+
+            context.log("Persisted File is saved!");
+            context.res = {
+                status: 200,
+                body: {
+                    message: 'You successfully saved the file!'
+                }
+            };
+            context.done();
+        });
     });
 }
 

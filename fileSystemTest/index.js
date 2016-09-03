@@ -28,11 +28,7 @@ module.exports = function (context, req, res) {
     context.log(req);
 
     context.log('Environment Variables');
-    environmentVariables
-        .map(getEnvironmentVarible)
-        .forEach(function (x) {
-            context.log(x);
-        });
+    contest.log(process.env);
 
     context.log('process.cwd()', process.cwd());
     context.log('__dirname', __dirname);

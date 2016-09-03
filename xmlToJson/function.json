@@ -3,6 +3,7 @@
     {
       "name": "xmlZipBlob",
       "type": "blobTrigger",
+      "dataType":  "binary",
       "direction": "in",
       "path": "balancedataxml",
       "connection": "sc2iq_STORAGE"

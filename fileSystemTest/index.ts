@@ -1,7 +1,7 @@
-var fs = require('fs');
-var path = require('path');
+import * as fs from 'fs';
+import * as path from 'path';
 
-var environmentVariables = [
+const environmentVariables = [
     "WEBSITE_SITE_NAME",
     "WEBSITE_SKU",
     "WEBSITE_COMPUTE_MODE",
@@ -23,7 +23,7 @@ var environmentVariables = [
     "WEBSITE_NPM_DEFAULT_VERSION"
 ]
 
-module.exports = function (context, req, res) {
+export function fileSystemTest(context: any, req: any, res: any) {
     context.log('function triggered');
     context.log(req);
 
@@ -55,6 +55,6 @@ module.exports = function (context, req, res) {
     });
 }
 
-function getEnvironmentVarible(name) {
+function getEnvironmentVarible(name: string): string {
     return name + ": " + process.env[name];
 }

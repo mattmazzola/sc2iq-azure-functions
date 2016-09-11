@@ -1,7 +1,7 @@
-var fs = require('fs');
-var path = require('path');
+import * as fs from 'fs';
+import * as path from 'path';
 
-module.exports = function (context, xmlZipBlob) {
+export function xml2json(context: any, xmlZipBlob: any) {
     context.log('Node.js blob trigger function processed blob:', xmlZipBlob);
     context.log(`typeof xmlZipBlob:`, typeof xmlZipBlob);
 

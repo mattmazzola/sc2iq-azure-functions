@@ -29,7 +29,12 @@
   },
   "homepage": "https://github.com/mattmazzola/sc2iq-azure-functions#readme",
   "devDependencies": {
+    "@types/es6-promise": "0.0.31",
     "@types/node": "^6.0.38",
     "typescript": "^2.0.2"
+  },
+  "dependencies": {
+    "@mattmazzola/azure-functions-typescript": "0.0.2",
+    "sc2-convertbalancedata": "0.0.2"
   }
 }

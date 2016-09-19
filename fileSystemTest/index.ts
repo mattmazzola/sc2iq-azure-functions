@@ -1,5 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import { IHttpContext, IFunctionRequest, HttpStatusCodes } from '@mattmazzola/azure-functions-typescript';
 
 const environmentVariables = [
     "WEBSITE_SITE_NAME",
